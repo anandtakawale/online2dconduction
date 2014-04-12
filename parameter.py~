@@ -1,7 +1,0 @@
-from mainHandler import *
-
-class parameter(mainHandler):
-    def get(self):
-        self.renderPage("parameters.html")
-
-

@@ -1,5 +1,0 @@
-import webapp2
-
-app = webapp2.WSGIApplication([('/',Parameter),
-                               ('/results', 2dconduct)],
-                              debug = True)
