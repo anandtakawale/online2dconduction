@@ -1,0 +1,21 @@
+from mainHandler import *
+from validTemp import validTemp
+
+class conduct2d(mainHandler):
+    def post(self):
+        Tup = self.request.get('Tup')
+        Tleft = self.request.get('Tleft')
+        Tdown = self.request.get('Tdown')
+        Tright = self.request.get('Tright')
+        Tuser = {'Tup':Tup, 'Tleft':Tleft, 'Tright':Tright, 'Tdown':Tdown}
+        T = validTemp(**Tuser)
+        if type(T) == list:
+            error = 'Temperatures '
+            for t in T:
+                error = error + t + ' '
+            error += 'not valid'
+            self.renderPage("parameters.html", error = error, **Tuser)
+        else:
+            self.response.headers['Content-type'] = 'text/plain'
+            self.write(self.request)
+        

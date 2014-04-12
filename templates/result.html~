@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Online 2d condution results</title>
+  </head>
+  <body>
+    <h2>Online 2D condution results</h2>
+    <hr></hr>
+    <p>
+      Here is your result, a stady state temperature distribution contour plot
+      </p>
+    <img src='data:image/png;base64,{{img_b64}})
+  </body>

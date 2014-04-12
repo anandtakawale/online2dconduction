@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Online 2D conduction</title>
+        <link type="text/css" rel = "stylesheet" href = "/static/main.css" />
+    <script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+  <body>
+    <h1>Online 2D conduction</h1>
+    <div>
+    <p>Welcome to online2dconduction, here you can obtain plots for steady state 2d conduction problem with Dirichlet boundary conditions applied
+      </p>
+    </div>
+    <div>
+      Please enter temperatures in \(^{o}C\) so as to obtain 2d online conduction plots:
+    </div>
+    <form action = "/result" method="post">
+    <table>
+
+      <tr>
+	<td> Upper wall temperature</td>
+	<td>\(T_{up}\)</td>
+	<td><input type="text" name="Tup" value={{Tup}}></td>
+	<td style = "color: red">{{errorTup}}</td>
+      </tr>
+
+      <tr>
+	<td> Left side wall temperature</td>	
+	<td>\(T_{left}\)</td>
+	<td><input type="text" name="Tleft" value={{Tleft}}></td>
+	<td style = "color: red">{{errorTleft}}</td>
+      </tr>
+
+      <tr>
+	<td> Lower side wall temperature</td>
+	<td>\(T_{down}\)</td>
+	<td><input type="text" name="Tdown" value = {{Tdown}}></td>
+	<td style = "color: red">{{errorTdown}}</td>
+      </tr>
+
+      <tr>
+	<td> Right side wall temperature</td>
+	<td>\(T_{right}\)</td>
+	<td><input type="text" name="Tright" value = {{Tright}}></td>
+	<td style = "color: red">{{errorTright}}</td>
+      </tr>
+
+    </table>
+    <input type="submit" value="Go Go Go">
+    </form>
+  </body>
+</html>
