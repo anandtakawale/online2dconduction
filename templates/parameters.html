@@ -5,13 +5,21 @@
         <link type="text/css" rel = "stylesheet" href = "/static/main.css" />
     <script type="text/javascript"
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+    </script>
   </head>
   <body>
     <h1>Online 2D conduction</h1>
     <div>
-    <p>Welcome to online2dconduction, here you can obtain plots for steady state 2d conduction problem with Dirichlet boundary conditions applied
+      {% if username %}
+      <p> 
+	Welcome {{username}} to online2dconduction, here you can obtain plots for steady state 2d conduction problem with Dirichlet boundary conditions applied.
       </p>
+      {% else %}
+      <p>
+	Welcome to online2dconduction, here you can obtain plots for steady state 2d conduction problem with Dirichlet boundary conditions applied.
+	Want your plot be shown on this page, please <a href="{{loginLink}}">Login to google</a>
+      </p>
+    {% endif %}
     </div>
     <div>
       Please enter temperatures in \(^{o}C\) so as to obtain 2d online conduction plots:
@@ -48,7 +56,22 @@
       </tr>
 
     </table>
-    <input type="submit" value="Go Go Go">
+    <input type="submit" value="Plot it">
     </form>
+    {% for plot in plots %}
+    <hr>
+    By {{plot.user.nickname()}}
+    <table>
+      <tr>
+	<td>\(T_{up}\) = {{plot.Tup}}</td>
+	<td>\(T_{left}\) = {{plot.Tleft}}</td>
+	<td>\(T_{down}\) = {{plot.Tdown}}</td>
+	<td>\(T_{right}\) = {{plot.Tright}}</td>
+      </tr>
+    </table>
+    <div>
+      <img src="{{plot.image}}"></img>
+    </div>
+    {% endfor %}
   </body>
 </html>

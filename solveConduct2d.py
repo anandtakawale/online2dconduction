@@ -9,14 +9,13 @@ def solveConduct2d(**kwargs):
     ny = 30
     Tinitial = 0.25 * (Tup + Tdown + Tleft + Tright)
     T = np.ones((nx,ny)) * Tinitial
-    T[0,:] = Tup
-    T[nx - 1, :] = Tdown
+    T[0,:] = Tdown
+    T[nx - 1, :] = Tup
     T[:,0] = Tleft
     T[:,ny-1] = Tright
-    print T
     e = np.zeros(T.shape)
     error = 10
-    acc = 0.01
+    acc = 0.1
     count = 0
     while error >= acc:
         count += 1

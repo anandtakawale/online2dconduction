@@ -5,40 +5,39 @@
     <link type="text/css" rel = "stylesheet" href = "/static/main.css" />
     <script type="text/javascript"
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-
+    </script>
   </head>
   <body>
-    <h2>Online 2D condution results</h2>
+    <a href = "/"><h2>Online 2D conduction</h2></a>
     <hr></hr>
     <p>
       Here is your result, a stady state temperature distribution contour plot.
     </p>
-    <p>
     Boundary conditions specified were as follows:
     <table>
       <tr>
-	<td>\(T_up\)</td>
+	<td>\(T_{up}\)</td>
 	<td> = </td>
 	<td>{{Tup}}</td>
       </tr>
       <tr>
-	<td>\(T_left\)</td>
+	<td>\(T_{left}\)</td>
 	<td> = </td>
 	<td>{{Tleft}}</td>
       </tr>
       <tr>
-	<td>\(T_down\)</td>
+	<td>\(T_{down}\)</td>
 	<td> = </td>
 	<td>{{Tdown}}</td>
       </tr>
       <tr>
-	<td>\(T_right\)</td>
+	<td>\(T_{right}\)</td>
 	<td> = </td>
 	<td>{{Tright}}</td>
       </tr>
       </table>
-    </p>
     <div>
-      <img src='data:image/png;base64,{{plot}}></img>
+      <img src="{{plot}}"></img>
     </div>
   </body>
+</html>

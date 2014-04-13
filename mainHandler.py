@@ -1,7 +1,9 @@
 import webapp2
 from jinja2Setup import *
-#Defining a super class to make rendering jinja2 templates easy for other. All other Handlers inherit from this.
 
+from google.appengine.api import users
+
+#Defining a super class to make rendering jinja2 templates easy for other. All other Handlers inherit from this.
 class mainHandler(webapp2.RequestHandler):
     def write(self, *args, **kwargs):
         self.response.out.write(*args, **kwargs)
