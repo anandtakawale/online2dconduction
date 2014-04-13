@@ -8,18 +8,35 @@
     </script>
   </head>
   <body>
-    <h1>Online 2D conduction</h1>
+    <h1><a href = "/">Online 2D conduction</a></h1>
+    <div class = "login-area" >
+      <a class = "login-link" href = "{{loginLink}}">Login</a>
+      |
+      <a class = "login-link" href = "{{logoutLink}}">Logout</a>
+    </div>
+
     <div>
       {% if username %}
       <p> 
-	Welcome {{username}} to online2dconduction, here you can obtain plots for steady state 2d conduction problem with Dirichlet boundary conditions applied.
+	Welcome <font color="green">{{username}}</font> to online2dconduction, here you can obtain <font color = "blue">plots for steady state 2d conduction</font> problem with Dirichlet boundary conditions applied.
       </p>
       {% else %}
       <p>
-	Welcome to online2dconduction, here you can obtain plots for steady state 2d conduction problem with Dirichlet boundary conditions applied.
+	Welcome to online2dconduction, here you can obtain <font color = "blue">plots for steady state 2d conduction</font> problem with Dirichlet boundary conditions applied.<br>
 	Want your plot be shown on this page, please <a href="{{loginLink}}">Login to google</a>
       </p>
     {% endif %}
+    </div>
+    <p>
+      The code solves <a href = "http://en.wikipedia.org/wiki/Heat_equation">heat conduction equation</a> for constant temperature boundary condition without internal heat generation using iterative numerical method. The scheme used for solving is <a href="http://en.wikipedia.org/wiki/Explicit_and_implicit_methods">explicit</a>
+    </p>
+    <div>
+      <p class = "mapcomment">
+	<font color ="orange">We had visitors from</font>
+      </p>
+      {% if geolocationUrl %}
+      <img class = "map" src = "{{geolocationUrl}}">
+      {% endif %}
     </div>
     <div>
       Please enter temperatures in \(^{o}C\) so as to obtain 2d online conduction plots:
@@ -55,20 +72,24 @@
 	<td style = "color: red">{{errorTright}}</td>
       </tr>
 
+      <p>
+	Select type of contour plot<br>
+	<input type="radio" name="plotType" value="filled" checked = "checked">Filled contour<br>
+	<input type="radio" name="plotType" value="simple">Simple contour
+      </p>
     </table>
     <input type="submit" value="Plot it">
     </form>
     {% for plot in plots %}
     <hr>
-    By {{plot.user.nickname()}}
-    <table>
-      <tr>
-	<td>\(T_{up}\) = {{plot.Tup}}</td>
-	<td>\(T_{left}\) = {{plot.Tleft}}</td>
-	<td>\(T_{down}\) = {{plot.Tdown}}</td>
-	<td>\(T_{right}\) = {{plot.Tright}}</td>
-      </tr>
-    </table>
+    By {{plot.user.nickname()}}<br>
+    Boundary conditions were
+      <ul>
+	<li>\(T_{up}\) = {{plot.Tup}} \(^{o}C\)</li>
+	<li>\(T_{left}\) = {{plot.Tleft}} \(^{o}C\)</li>
+	<li>\(T_{down}\) = {{plot.Tdown}} \(^{o}C\)</li>
+	<li>\(T_{right}\) = {{plot.Tright}} \(^{o}C\)</li>
+      </ul>
     <div>
       <img src="{{plot.image}}"></img>
     </div>

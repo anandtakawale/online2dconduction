@@ -1,0 +1,6 @@
+indexes:
+- kind: Plot
+  ancestor: yes
+  properties:
+  - name: created
+    direction: desc

@@ -2,6 +2,8 @@ from google.appengine.ext import db
 from google.appengine.api import memcache
 import logging
 
+plots_key = db.Key.from_path('plot', 'default')
+
 class Plot(db.Model):
     Tup = db.FloatProperty(required = True)
     Tleft = db.FloatProperty(required = True)
@@ -10,7 +12,7 @@ class Plot(db.Model):
     created = db.DateTimeProperty(auto_now_add = True)
     image = db.TextProperty(required = True)
     user = db.UserProperty(required = True)
-    
+    geoPt = db.GeoPtProperty()
 
 def recentPlots(update = False):
     key = 'recent'
@@ -20,5 +22,4 @@ def recentPlots(update = False):
         plots = db.GqlQuery("SELECT * FROM Plot ORDER BY created DESC LIMIT 5")
         plots = list(plots)
         memcache.set(key, plots)
-        logging.error("Added plot with key " + str(plots[0].key().id()))
     return plots

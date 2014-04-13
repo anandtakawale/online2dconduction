@@ -22,3 +22,6 @@ libraries:
   version: latest
 - name: numpy
   version: latest
+- name: matplotlib
+  version: latest
+
